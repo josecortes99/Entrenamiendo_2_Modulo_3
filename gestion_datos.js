@@ -7,21 +7,24 @@ const productos = {
     4: {id: 4, nombre: "teclado", precio: 50},
     5: {id: 5, nombre: "savia", precio: 50}
 };
-
 console.log("Objeto Productos", productos);
 
 //Creacion de Set 
-const setProductos = new Set(Object.values(productos).map(producto => producto.nombre));
-console.log("Set Productos Unicos", setProductos);
+const setProductos = new Set();
+for (clave in productos){
+    let producto = productos[clave];
+    setProductos.add(producto.nombre);
+}
+console.log("Set Productos Únicos", setProductos);
 
 //Creacion Map
-const mapProductos = new Map([
-    ["Electronica", "laptop"],
-    ["Accesorios", "mouse"],
-    ["Accesorios", "teclado"],
-    ["botanica", "savia"]
-]);
-console.log("Map de Productos y Ctegorias:", mapProductos);
+const mapProductos = new Map();
+for (clave in productos){
+    let producto = productos[clave];
+    mapProductos.set(producto.id, producto);
+}
+console.log("Map de Productos y Categorias:", mapProductos);
+
 
 //Recorrer el objeto productos
 for (const id in productos) {
